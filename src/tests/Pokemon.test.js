@@ -19,7 +19,6 @@ describe('6 - Teste o componente Pokemon', () => {
     expect(cardType).toHaveTextContent(/electric/i);
     expect(cardWeight).toBeInTheDocument();
     expect(cardeImage.src).toBe('https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
-    // expect(cardeImage.alt).toBe(/pikachu sprite/i);
   });
 
   it(`Teste se o card do Pokémon indicado na Pokédex contém um link 
@@ -46,7 +45,7 @@ describe('6 - Teste o componente Pokemon', () => {
   });
   it('Teste se existe um ícone de estrela nos Pokémons favoritados', () => {
     renderWithRouter(<App />);
-    const link = screen.getByText('More details');
+    const link = screen.getByText(details);
     userEvent.click(link);
     const fav = screen.getByRole('checkbox');
     userEvent.click(fav);
@@ -54,7 +53,6 @@ describe('6 - Teste o componente Pokemon', () => {
     const icon = screen.getAllByRole('img');
     expect(icon[1]).toBeInTheDocument();
     expect(icon[1]).toHaveAttribute('alt', 'Pikachu is marked as favorite');
-    expect(icon[0]).toBeInTheDocument();
-    expect(icon[0]).toHaveAttribute('src', 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
+    expect(icon[1]).toHaveAttribute('src', '/star-icon.svg');
   });
 });
