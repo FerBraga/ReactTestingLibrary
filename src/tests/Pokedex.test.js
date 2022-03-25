@@ -18,7 +18,7 @@ describe('5 - Teste o componente Pokedex', () => {
     const btnNxt = screen.getByRole('button', { name: 'Próximo pokémon' });
     userEvent.click(btnNxt);
 
-    const card = screen.getByRole('link', { name: /more details/i });
+    const card = screen.getByText(/charmander/i);
     expect(card).toBeInTheDocument();
   });
   it('Teste se é mostrado apenas um Pokémon por vez', () => {
@@ -69,7 +69,7 @@ describe('5 - Teste o componente Pokedex', () => {
 
     userEvent.click(btnall);
 
-    const pokes = screen.getByTestId('pokemon-name');
+    const pokes = screen.getByText(/pikachu/i);
     expect(pokes).toBeInTheDocument();
 
     expect(btnall).toBeVisible();
